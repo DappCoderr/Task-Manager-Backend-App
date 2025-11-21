@@ -1,7 +1,7 @@
-import express from "express";
+import express from 'express';
 
-const route = express.Router()
+const route = express.Router();
 
-route.get("/user", )
+route.get('/user');
 
-export default route
+export default route;
