@@ -1,0 +1,11 @@
+{
+  "name": "task-manager-backend-app",
+  "version": "1.0.0",
+  "description": "A Backend App where multiple users can sign up, log in, create tasks, update them, assign them to others, and track activity logs — with proper rate-limiting and validation on every endpoint.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haardik",
+  "license": "ISC"
+}
