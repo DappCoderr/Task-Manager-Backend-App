@@ -5,8 +5,8 @@ import { SECRET } from '../config/config.js';
 
 export const signUp = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const newUser = await User.create({ name, email, password });
+    const { name, email, password, role } = req.body;
+    const newUser = await User.create({ name, email, password, role });
     res.status(201).json({
       success: true,
       message: 'User created successfully',
@@ -39,7 +39,7 @@ export const signIn = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { userId: user.name, userEmail: user.email },
+      { userName: user.name, userEmail: user.email },
       SECRET,
       { expiresIn: 1000 }
     );
@@ -70,6 +70,23 @@ export const getAllUser = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Internal server error, fail to fetch all users',
+    });
+  }
+};
+
+export const getUserDetailsById = async (req, res) => {
+  try {
+    const email = req.userEmail;
+    const user = await User.findOne({ email });
+    res.status(201).json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    console.log('Error while getting user details: ', error);
+    res.status(500).json({
+      success: false,
+      message: 'Fail to get user details',
     });
   }
 };
