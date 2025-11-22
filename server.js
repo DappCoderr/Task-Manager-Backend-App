@@ -6,7 +6,7 @@ const app = express();
 
 const PORT = 7777;
 
-app.use(express.json())
+app.use(express.json());
 app.use('/api', apiRoute);
 
 app.listen(PORT, () => {

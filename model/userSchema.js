@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
       maxlength: 100,
       validate: [validator.isEmail, 'Invalid email'],
-      index: true
+      index: true,
     },
     password: {
       type: String,
