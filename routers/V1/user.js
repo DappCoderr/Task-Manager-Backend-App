@@ -1,6 +1,9 @@
 import express from 'express';
-import {getAllUser, getUserDetailsByEmail} from '../../controllers/user.controller.js';
-import { isAdmin, verifyToken } from '../../middleware/auth.mw.js';
+import {
+  getAllUser,
+  getUserDetailsByEmail,
+} from '../../controllers/user.controller.js';
+import { isAdmin, verifyToken } from '../../middlewares/auth.mw.js';
 
 const route = express.Router();
 
