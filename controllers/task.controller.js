@@ -17,16 +17,27 @@ export const createTask = async(req,res) => {
         res.status(500).json({ success: false, message: 'Fail: new task created'});
     }
 }
-export const getAllTasks = (req, res) => {
+
+export const getAllTasks = async(req, res) => {
     try {
-        
+        const allTasks = await Task.find()
+        res.status(201).json({ success: true, data:allTasks})
     } catch (error) {
-        console.log("Error to fail all tasks: ", error)
+        console.log("Fail to get all tasks: ", error)
         res.status(500).json({ success: false, message: 'Fail to fetch all task'});
     }
 }
 
-export const getTaskById = (req, res) => {}
+export const getTaskById = async(req, res) => {
+    try {
+        const {id} = req.params;
+        const taskCreatedBy = await Task.findOne({id})
+        res.status(201).json({ success: true, data:taskCreatedBy})
+    } catch (error) {
+        console.log("Error while fetching task created by user: ", error)
+        res.status(500).json({ success: false, message: 'Fail to fetch task by id'});
+    }
+}
 
 export const getUserTask = (req,res) => {}
 export const updateTaskById = (req, res) => {}
