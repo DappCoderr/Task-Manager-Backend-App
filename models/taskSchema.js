@@ -60,7 +60,7 @@ taskSchema.pre('save', async function (next) {
     if (!assignedUserRole) {
       next(new Error('Assigned User not found'));
     }
-    if (assignedUser.role !== 'USER') {
+    if (assignedUserRole.role !== 'USER') {
       next(new Error('Task is only assigned to USER'));
     }
     next();
