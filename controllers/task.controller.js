@@ -56,20 +56,20 @@ export const createTask = async (req, res) => {
 export const getAllTasks = async (req, res) => {
   try {
     const allTasks = await Task.find()
-      .populate('assignedTo', 'name')
-      .populate('createdBy', 'name');
-    const formatTask = allTasks.map((task) => ({
-      _id: task._id,
-      title: task.title,
-      description: task.description,
-      status: task.status,
-      priority: task.priority,
-      assignedTo: task.assignedTo?.name,
-      createdBy: task.createdBy?.name,
-      createdAt: task.createdAt,
-      updatedAt: task.updatedAt,
-    }));
-    res.status(201).json({ success: true, data: formatTask });
+    //   .populate('assignedTo', 'name')
+    //   .populate('createdBy', 'name');
+    // const formatTask = allTasks.map((task) => ({
+    //   _id: task._id,
+    //   title: task.title,
+    //   description: task.description,
+    //   status: task.status,
+    //   priority: task.priority,
+    //   assignedTo: task.assignedTo?.name,
+    //   createdBy: task.createdBy?.name,
+    //   createdAt: task.createdAt,
+    //   updatedAt: task.updatedAt,
+    // }));
+    res.status(201).json({ success: true, data: allTasks });
   } catch (error) {
     console.log('Fail to get all tasks: ', error);
     res.status(500).json({ success: false, message: 'Fail to fetch all task' });
