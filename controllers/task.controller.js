@@ -55,7 +55,7 @@ export const createTask = async (req, res) => {
 
 export const getAllTasks = async (req, res) => {
   try {
-    const allTasks = await Task.find()
+    const allTasks = await Task.find();
     //   .populate('assignedTo', 'name')
     //   .populate('createdBy', 'name');
     // const formatTask = allTasks.map((task) => ({
@@ -118,6 +118,21 @@ export const updateTaskById = async (req, res) => {
   }
 };
 
-export const deleteTaskById = (req, res) => {};
+export const deleteTaskById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const task = await Task.findByIdAndDelete(id);
+    res.status(200).json({
+      success: true,
+      data: task,
+    });
+  } catch (error) {
+    console.log('Error while deleting the task: ', error);
+    res.status(500).json({
+      success: false,
+      message: 'Fail to delete the task',
+    });
+  }
+};
 
 export const deleteCompletedTask = (req, res) => {};
