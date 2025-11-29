@@ -6,7 +6,7 @@ import taksRoute from './task.js';
 const route = express.Router();
 
 route.use('/auth', authRoute);
-route.use('/user', userRoute);
-route.use('/task', taksRoute);
+route.use('/users', userRoute);
+route.use('/tasks', taksRoute);
 
 export default route;

@@ -13,12 +13,12 @@ export const registerUser = async (req, res) => {
       data: newUser,
     });
   } catch (error) {
-    console.log('Error while signUp: ', error);
-    res.status(500).json({ success: false, message: 'User signUp failed' });
+    console.log('Error while user login: ', error);
+    res.status(500).json({ success: false, message: 'User registeration failed' });
   }
 };
 
-export const loginUser = async (req, res) => {
+export const signUp = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email }).select('+password');
@@ -54,6 +54,6 @@ export const loginUser = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log('Error while getting signIn: ', error);
+    console.log('Error while getting signUp: ', error);
   }
 };

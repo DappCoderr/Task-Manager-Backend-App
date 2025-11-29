@@ -10,12 +10,12 @@ import { verifyToken } from '../../middlewares/auth.mw.js';
 
 const route = express.Router();
 
-route.get('/', getAllTasks);
+route.get('', getAllTasks);
 route.get('/user/:id', getTaskById);
 
-route.post('/newTask', verifyToken, createTask);
-route.put('/update/:id', updateTaskById);
+route.post('', verifyToken, createTask);
+route.put('/:id', updateTaskById);
 
-route.delete('/delete/:id', deleteTaskById);
+route.delete('/:id', deleteTaskById);
 
 export default route;
